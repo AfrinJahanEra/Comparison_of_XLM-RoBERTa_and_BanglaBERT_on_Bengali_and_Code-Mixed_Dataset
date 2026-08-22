@@ -1,59 +1,125 @@
 # Comparison of XLM-RoBERTa and BanglaBERT on Bengali and Code-Mixed Datasets
 
-## Project Overview
-
-This repository presents a comprehensive comparative analysis of two transformer-based models—**XLM-RoBERTa** (multilingual) and **BanglaBERT** (monolingual)—for sentiment classification on Bengali and code-mixed datasets. The study evaluates model performance across three benchmark datasets: **Motamot** (political news comments), **SentNoB** (social media comments), and **BanglaBook** (book reviews). Experiments are conducted under both zero-shot and fine-tuned settings to assess inherent linguistic understanding and task-specific adaptability.
-
 **Authors:** Ramisa Anan Rahman, Ridika Naznin, Zannatul Adon Sabiha, Afrin Jahan Era, Ayesha Binte Anis  
-**Affiliation:** Department of Computer Science and Engineering, Islamic University of Technology, Dhaka, Bangladesh  
-**Repository:** [https://github.com/AfrinJahanEra/Sentiment_Analysis](https://github.com/AfrinJahanEra/Sentiment_Analysis)
+**Affiliation:** Department of Computer Science and Engineering, Islamic University of Technology, Dhaka, Bangladesh
 
----
+**Read the Paper:** [Paper](https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/Comparative%20Performance%20of%20XLM-RoBERTa%20and%20BanglaBERT%20on%20Pure%20Bengali%20and%20Code-Mixed%20Text.pdf)
+
 
 ## Abstract
 
-This study presents a comparative analysis of transformer-based language models for Bangla sentiment classification across multiple benchmark datasets, including Motamot, SentNoB, and BanglaBook. We evaluate the performance of two prominent models—BanglaBERT, a monolingual model pretrained specifically on Bangla corpora, and XLM-RoBERTa, a multilingual model trained on diverse languages. The experiments consider both zero-shot and fine-tuned settings to assess the models’ inherent linguistic understanding and adaptability to downstream tasks. Our results demonstrate that fine-tuning significantly improves performance for both models across all datasets. However, BanglaBERT consistently outperforms XLM-RoBERTa in most evaluation metrics, including accuracy, F1-score, and recall, while maintaining competitive precision. Notably, BanglaBERT exhibits strong zero-shot performance, whereas XLM-RoBERTa performs poorly without task-specific training, highlighting the importance of language-specific pretraining. Further analysis using confusion matrices and training dynamics reveals that BanglaBERT benefits from faster convergence and more stable learning behavior. In contrast, XLM-RoBERTa requires substantial fine-tuning to achieve comparable results. These findings emphasize the effectiveness of monolingual pretrained models for low-resource languages like Bangla and provide insights into model selection for sentiment analysis tasks.
-
----
+> <img src="https://github.com/user-attachments/assets/311f0bb5-faff-442c-8eab-8dbc4f625f15" align="right" width="200px"/>
+> This study presents a comparative analysis of transformer-based language models for Bangla sentiment classification across multiple benchmark datasets, including Motamot, SentNoB, and BanglaBook. We evaluate the performance of two prominent models—BanglaBERT, a monolingual model pretrained specifically on Bangla corpora, and XLM-RoBERTa, a multilingual model trained on diverse languages. The experiments consider both zero-shot and fine-tuned settings to assess the models’ inherent linguistic understanding and adaptability to downstream tasks. Our results demonstrate that fine-tuning significantly improves performance for both models across all datasets. However, BanglaBERT consistently outperforms XLM-RoBERTa in most evaluation metrics, including accuracy, F1-score, and recall, while maintaining competitive precision. Notably, BanglaBERT exhibits strong zero-shot performance, whereas XLM-RoBERTa performs poorly without task-specific training, highlighting the importance of language-specific pretraining. Further analysis using confusion matrices and training dynamics reveals that BanglaBERT benefits from faster convergence and more stable learning behavior. In contrast, XLM-RoBERTa requires substantial fine-tuning to achieve comparable results. These findings emphasize the effectiveness of monolingual pretrained models for low-resource languages like Bangla and provide insights into model selection for sentiment analysis tasks.
 
 ## Datasets
+
+> <img align="right" src="https://github.com/user-attachments/assets/dd9355a1-119d-4c0c-808b-0e88fb18b517" width="400px" />
 
 ### 1. Motamot Dataset
 
 A sentiment analysis dataset focused on political opinions expressed by users across various platforms. It captures diverse public perspectives, including support, criticism, and neutral commentary on political topics.
 
-| Split | Positive | Negative | Total |
-|-------|----------|----------|-------|
-| Train | 3,306 | 2,341 | 5,647 |
-| Validation | 413 | 292 | 705 |
-| Test | 413 | 293 | 706 |
-| **Total** | 4,132 (58.54%) | 2,926 (41.46%) | **7,058** |
-
 ### 2. SentNoB Dataset
 
 A sentiment analysis dataset constructed from real-world social media comments, reflecting diverse public opinions across multiple domains. It includes data from 13 different topics, such as politics, education, and technology.
-
-| Split | Positive | Negative | Neutral | Total |
-|-------|----------|----------|---------|-------|
-| Train | 5,133 | 4,548 | 2,894 | 12,575 |
-| Validation | 623 | 590 | 354 | 1,567 |
-| Test | 654 | 571 | 361 | 1,586 |
-| **Total** | 6,410 (40.8%) | 5,709 (36.3%) | 3,609 (22.9%) | **15,728** |
 
 ### 3. BanglaBook Dataset
 
 A large-scale sentiment analysis dataset composed of book reviews collected from popular online bookstores such as Rokomari and Wafilife. The reviews are originally associated with user ratings, which are subsequently mapped into sentiment categories.
 
-| Split | Positive | Negative | Total |
-|-------|----------|----------|-------|
-| Train | 99,110 | 6,772 | 105,882 |
-| Validation | 14,159 | 967 | 15,126 |
-| Test | 28,318 | 1,935 | 30,253 |
-| **Total** | 141,587 (93.60%) | 9,674 (6.40%) | **151,261** |
+<table>
+  <tr>
+    <th colspan="4">Motamot Dataset</th>
+    <th colspan="4">BanglaBook Dataset</th>
+    <th colspan="5">SentNoB Dataset</th>
+  </tr>
 
----
+  <tr>
+    <th>Split</th>
+    <th>Positive</th>
+    <th>Negative</th>
+    <th>Total</th>
+    <th>Split</th>
+    <th>Positive</th>
+    <th>Negative</th>
+    <th>Total</th>
+    <th>Split</th>
+    <th>Positive</th>
+    <th>Negative</th>
+    <th>Neutral</th>
+    <th>Total</th>
+  </tr>
+
+  <tr>
+    <td>Train</td>
+    <td>3,306</td>
+    <td>2,341</td>
+    <td>5,647</td>
+    <td>Train</td>
+    <td>99,110</td>
+    <td>6,772</td>
+    <td>105,882</td>
+    <td>Train</td>
+    <td>5,133</td>
+    <td>4,548</td>
+    <td>2,894</td>
+    <td>12,575</td>
+  </tr>
+
+  <tr>
+    <td>Validation</td>
+    <td>413</td>
+    <td>292</td>
+    <td>705</td>
+    <td>Validation</td>
+    <td>14,159</td>
+    <td>967</td>
+    <td>15,126</td>
+    <td>Validation</td>
+    <td>623</td>
+    <td>590</td>
+    <td>354</td>
+    <td>1,567</td>
+  </tr>
+
+  <tr>
+    <td>Test</td>
+    <td>413</td>
+    <td>293</td>
+    <td>706</td>
+    <td>Test</td>
+    <td>28,318</td>
+    <td>1,935</td>
+    <td>30,253</td>
+    <td>Test</td>
+    <td>654</td>
+    <td>571</td>
+    <td>361</td>
+    <td>1,586</td>
+  </tr>
+
+  <tr>
+    <th>Total</th>
+    <th>4,132 (58.54%)</th>
+    <th>2,926 (41.46%)</th>
+    <th>7,058</th>
+    <th>Total</th>
+    <th>141,587 (93.60%)</th>
+    <th>9,674 (6.40%)</th>
+    <th>151,261</th>
+    <th>Total</th>
+    <th>6,410 (40.8%)</th>
+    <th>5,709 (36.3%)</th>
+    <th>3,609 (22.9%)</th>
+    <th>15,728</th>
+  </tr>
+
+</table>
 
 ## Implementation Details
+
+> <img align="right" width="400" src="https://github.com/user-attachments/assets/eb6773a7-033c-4197-b433-6ac6fab02ab5" />
+
 
 ### Dataset Preparation
 - Neutral samples were removed to focus on binary sentiment classification
@@ -73,20 +139,19 @@ Datasets originally containing three sentiment classes were converted into binar
 Models were directly applied to datasets without any task-specific training to assess inherent understanding of Bangla sentiment. For binary classification, a sample was classified as positive if the positive score exceeded the negative score, bypassing the neutral class.
 
 ### Fine-Tuning Setup
-- 3 training epochs
-- Learning rate: 2e-5
-- Batch size: 16
-- Weight decay: 0.01
-- Model selection based on highest validation F1-score
+| Training epochs | Learning rates | Batch size | Weight decay | Model selection |
+| :-: | :-: | :-: | :-: | :-: |
+| 3 | 2e-5 | 16 | 0.01 | f1-score |
 
 ### Evaluation Metrics
-- Accuracy
-- F1-Score
-- Precision
-- Recall
-- Confusion Matrix Analysis
+| Accuracy | F1-Score | Precision | Recall | Confusion Matrix Analysis |
+| :-: | :-: | :-: | :-: | :-: |
 
----
+| <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig1.png" width="100px" /> | <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig2.png" width="100px" />  | <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig4.png" width="100px" />  | <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig5.png" width="100px" />  | <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig7.png" width="100px" />  | <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig8.png" width="100px" /> |
+| :-: | :-: | :-: | :-: | :-: | :-: |
+
+| <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig10.png" width="100px" /> | <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig11.png" width="100px" />  | <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig13.jpeg" width="100px" />  | <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig14.jpeg" width="100px" />  | <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig16.jpeg" width="100px" />  | <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig17.jpeg" width="100px" /> |
+| :-: | :-: | :-: | :-: | :-: | :-: |
 
 ## Results
 
@@ -97,19 +162,33 @@ Models were directly applied to datasets without any task-specific training to a
 | **BanglaBERT** | **88.66%** | **88.27%** | **88.09%** | 88.49% |
 | XLM-RoBERTa | 85.69% | 87.58% | 86.20% | **89.00%** |
 
-**Training Epochs (BanglaBERT):**
+<table>
+<tr>
+<td valign="top">
+
+**Training Epochs (BanglaBERT)**
+
 | Epoch | Training Loss | Validation Loss | Accuracy | F1-Score |
 |-------|---------------|-----------------|----------|----------|
 | 1 | 56.22% | 42.00% | 80.99% | 83.25% |
 | 2 | 39.69% | 39.07% | 82.27% | 84.96% |
 | 3 | 32.83% | 44.34% | 81.70% | 85.26% |
 
-**Training Epochs (XLM-RoBERTa):**
+</td>
+
+<td valign="top">
+
+**Training Epochs (XLM-RoBERTa)**
+
 | Epoch | Training Loss | Validation Loss | Accuracy | F1-Score |
 |-------|---------------|-----------------|----------|----------|
 | 1 | 50.16% | 47.98% | 77.87% | 81.69% |
 | 2 | 43.68% | 47.30% | 79.01% | 82.13% |
 | 3 | 32.96% | 50.83% | 79.01% | 82.42% |
+
+</td>
+</tr>
+</table>
 
 ### SentNoB Dataset
 
@@ -118,19 +197,33 @@ Models were directly applied to datasets without any task-specific training to a
 | **BanglaBERT** | **86.44%** | **86.41%** |
 | XLM-RoBERTa | 86.00% | 86.00% |
 
-**Negative Class Performance:**
+<table>
+<tr>
+<td valign="top">
+
+**Negative Class Performance**
+
 | Metric | BanglaBERT | XLM-RoBERTa |
 |--------|------------|-------------|
 | F1-Score | 0.85 | 0.85 |
 | Recall | 0.83 | 0.83 |
 | Precision | 0.87 | 0.87 |
 
-**Positive Class Performance:**
+</td>
+
+<td valign="top">
+
+**Positive Class Performance**
+
 | Metric | BanglaBERT | XLM-RoBERTa |
 |--------|------------|-------------|
 | F1-Score | 0.88 | 0.88 |
 | Recall | 0.89 | 0.89 |
 | Precision | 0.86 | 0.86 |
+
+</td>
+</tr>
+</table>
 
 **Training Epochs (XLM-RoBERTa):**
 | Epoch | Training Loss | Validation Loss | Accuracy | F1-Score |
@@ -146,21 +239,36 @@ Models were directly applied to datasets without any task-specific training to a
 | **XLM-RoBERTa** | **96.80%** | **98.31%** | 99.30% | **97.33%** |
 | BanglaBERT | 96.61% | 98.21% | **99.46%** | 96.99% |
 
-**Training Epochs (XLM-RoBERTa):**
+<table>
+<tr>
+<td valign="top">
+
+**Training Epochs (XLM-RoBERTa)**
+
 | Epoch | Training Loss | Validation Loss | Accuracy | F1-Score |
 |-------|---------------|-----------------|----------|----------|
 | 1 | 0.1568 | 0.1501 | 96.25% | 98.03% |
 | 2 | 0.1065 | 0.1421 | 96.59% | 98.20% |
 | 3 | 0.1111 | 0.1512 | 96.72% | 98.27% |
 
-**Training Epochs (BanglaBERT):**
+</td>
+
+<td valign="top">
+
+**Training Epochs (BanglaBERT)**
+
 | Epoch | Training Loss | Validation Loss | Accuracy | F1-Score |
 |-------|---------------|-----------------|----------|----------|
 | 1 | 0.1409 | 0.1652 | 96.00% | 97.89% |
 | 2 | 0.1106 | 0.1472 | 96.50% | 98.15% |
 | 3 | 0.0964 | 0.1690 | 96.50% | 98.15% |
 
----
+</td>
+</tr>
+</table>
+
+<img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig3.png" width="100px" />  | <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig6.png" width="100px" />  | <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig9.png" width="100px" />  | <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig12.png" width="100px" />  | <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig15.jpeg" width="100px" /> | <img src="https://github.com/ridika-2004/Comparison_of_XLM-RoBERTa_and_BanglaBERT_on_Bengali_and_Code-Mixed_Dataset/blob/main/images/fig18.jpeg" width="100px" /> |
+| :-: | :-: | :-: | :-: | :-: | :-: |
 
 ## Comparative Analysis & Discussion
 
@@ -174,7 +282,7 @@ After fine-tuning, both models achieved strong and comparable performance. Bangl
 
 While precision is marginally higher for XLM-RoBERTa, BanglaBERT maintains a more balanced performance across all metrics, resulting in a slightly better overall classification capability. In zero-shot performance, BanglaBERT achieved moderate results (53-65%), while XLM-RoBERTa performed extremely poorly (3-6%). This indicates that BanglaBERT has a much stronger inherent understanding of Bangla text without task-specific training, where XLM-RoBERTa struggles significantly.
 
-**What is the reason behind this performance?** The performance differences can be attributed primarily to pretraining strategies and language specialization. BanglaBERT is a monolingual model pretrained exclusively on large-scale Bangla corpora, allowing it to capture the syntactic and semantic nuances of the language, including morphology, idiomatic expressions, and context-specific meanings. This specialized pretraining results in strong zero-shot performance. In contrast, XLM-RoBERTa is a multilingual model trained on over 100 languages simultaneously, diluting its capacity to represent any single language and leading to poor zero-shot performance on Bangla-specific sentiment tasks.
+> **What is the reason behind this performance?** The performance differences can be attributed primarily to pretraining strategies and language specialization. BanglaBERT is a monolingual model pretrained exclusively on large-scale Bangla corpora, allowing it to capture the syntactic and semantic nuances of the language, including morphology, idiomatic expressions, and context-specific meanings. This specialized pretraining results in strong zero-shot performance. In contrast, XLM-RoBERTa is a multilingual model trained on over 100 languages simultaneously, diluting its capacity to represent any single language and leading to poor zero-shot performance on Bangla-specific sentiment tasks.
 
 ### SentNoB Dataset
 
@@ -187,7 +295,7 @@ After fine-tuning, both models achieved strong and highly comparable performance
 
 Although BanglaBERT shows slightly higher numerical accuracy and F1-score, XLM-RoBERTa produces fewer total errors and lower false positive rates, indicating better robustness in classification. In zero-shot evaluation, XLM-RoBERTa performed very poorly with a large number of misclassifications, highlighting that fine-tuning is essential for multilingual models when dealing with noisy, low-resource datasets like SentNoB.
 
-**What does the confusion matrix reveal?** BanglaBERT shows slightly higher false positives (96) and maintains balanced classification but tends to over-predict the positive class. XLM-RoBERTa demonstrates lower false positives (83) and more conservative, precise predictions, resulting in overall fewer misclassifications. This suggests XLM-RoBERTa is more precise, while BanglaBERT is slightly more aggressive in classification. From the convergence graphs, BanglaBERT exhibits stronger overfitting as its validation loss increases more noticeably in later epochs, while XLM-RoBERTa shows comparatively better generalization stability.
+> **What does the confusion matrix reveal?** BanglaBERT shows slightly higher false positives (96) and maintains balanced classification but tends to over-predict the positive class. XLM-RoBERTa demonstrates lower false positives (83) and more conservative, precise predictions, resulting in overall fewer misclassifications. This suggests XLM-RoBERTa is more precise, while BanglaBERT is slightly more aggressive in classification. From the convergence graphs, BanglaBERT exhibits stronger overfitting as its validation loss increases more noticeably in later epochs, while XLM-RoBERTa shows comparatively better generalization stability.
 
 ### BanglaBook Dataset
 
@@ -199,11 +307,10 @@ After fine-tuning, both models achieved strong and highly comparable performance
 
 While BanglaBERT achieves slightly higher recall on the Positive class, XLM-RoBERTa maintains a more balanced performance across all metrics. In zero-shot performance, BanglaBERT achieved moderate results (23.38% accuracy), while XLM-RoBERTa performed extremely poorly (0.51% accuracy). This indicates that BanglaBERT has a much stronger inherent understanding of Bangla text without task-specific training, where XLM-RoBERTa struggles significantly. The accuracy improvement for BanglaBERT is 73.23% and XLM-RoBERTa is 96.29%.
 
-**What is the reason behind this performance?** The performance differences can be attributed primarily to pretraining strategies and language specialization. BanglaBERT's monolingual pretraining allows it to capture Bangla-specific nuances with high fidelity, enabling reasonable classification even without fine-tuning and faster adaptation requiring fewer training epochs. XLM-RoBERTa's multilingual pretraining dilutes its capacity for any single language, leading to poor zero-shot performance. However, its exposure to diverse linguistic patterns provides an advantage for book review classification, helping it generalize better across different writing styles, including Romanized Bangla (4.46% of the test set). This cross-lingual transfer capability explains why XLM-RoBERTa slightly outperforms BanglaBERT in the fine-tuned setting despite its poor zero-shot performance.
+> **What is the reason behind this performance?** The performance differences can be attributed primarily to pretraining strategies and language specialization. BanglaBERT's monolingual pretraining allows it to capture Bangla-specific nuances with high fidelity, enabling reasonable classification even without fine-tuning and faster adaptation requiring fewer training epochs. XLM-RoBERTa's multilingual pretraining dilutes its capacity for any single language, leading to poor zero-shot performance. However, its exposure to diverse linguistic patterns provides an advantage for book review classification, helping it generalize better across different writing styles, including Romanized Bangla (4.46% of the test set). This cross-lingual transfer capability explains why XLM-RoBERTa slightly outperforms BanglaBERT in the fine-tuned setting despite its poor zero-shot performance.
 
-**Error Analysis:** XLM-RoBERTa makes fewer total misclassifications (969 vs 1,027), with particular strength in identifying Negative reviews—producing 104 fewer false positives than BanglaBERT. This indicates XLM-RoBERTa is better at correctly classifying the minority Negative class. Conversely, BanglaBERT demonstrates superior performance on Positive reviews, producing 46 fewer false negatives, making it slightly better at capturing positive sentiment.
+> **Error Analysis:** XLM-RoBERTa makes fewer total misclassifications (969 vs 1,027), with particular strength in identifying Negative reviews—producing 104 fewer false positives than BanglaBERT. This indicates XLM-RoBERTa is better at correctly classifying the minority Negative class. Conversely, BanglaBERT demonstrates superior performance on Positive reviews, producing 46 fewer false negatives, making it slightly better at capturing positive sentiment.
 
----
 
 ## Summary of Model Performance
 
@@ -216,7 +323,6 @@ While BanglaBERT achieves slightly higher recall on the Positive class, XLM-RoBE
 | **BanglaBook** | BanglaBERT | 96.61% | 98.21% | 2 |
 | | XLM-RoBERTa | 96.80% | 98.31% | 3 |
 
----
 
 ## Key Findings
 
@@ -235,7 +341,6 @@ While BanglaBERT achieves slightly higher recall on the Positive class, XLM-RoBE
 
 6. **Multilingual Advantage:** XLM-RoBERTa's exposure to diverse linguistic patterns benefits tasks with code-mixed or Romanized Bangla text, helping it achieve competitive or slightly better results after sufficient fine-tuning.
 
----
 
 ## Conclusion
 
